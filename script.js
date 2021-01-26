@@ -1,3 +1,9 @@
+var startBtn = document.querySelector(".start_btn")
+var timer = document.querySelector(".timeScore")
+
+
+
+
 
 //start button 
 //timer 
@@ -39,7 +45,7 @@
 
 //if incorrect -time 
     //time = time -15
-    
+
 //when all qs answered GAME OVER 
 //when time === 0 game over 
 
