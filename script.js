@@ -109,17 +109,17 @@ function checkAnswer() {
 
 
 
-//click events on each answer
+//click events on each answer, after click event they are sent to check Answer function
 choiceA.addEventListener("click", checkAnswer)
 choiceB.addEventListener("click", checkAnswer)
 choiceC.addEventListener("click", checkAnswer)
 choiceD.addEventListener("click", checkAnswer)
 
-//keeps questions hidden when first loaded
+//keeps questions hidden when first loaded 
 questionSection.style.display = "none"
 userDetails.style.display = "none"
 
-//when start button is clicked start page will 
+//when start button is clicked start page will disappear and question section will appear in its place 
 startButton.addEventListener("click", function(){
     questionSection.style.display = "block",
     startButton.style.display = "none",
