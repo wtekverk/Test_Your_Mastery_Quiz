@@ -1,17 +1,17 @@
 //global variables 
 var startButton = document.getElementById("start_btn");
-var timeEl = document.querySelector(".timer");
-var questionSection = document.getElementById("question_section")
-var question = document.getElementById("question");
-var choiceA = document.getElementById("choice_A");
-var choiceB = document.getElementById("choice_B");
-var choiceC = document.getElementById("choice_C");
-var choiceD = document.getElementById("choice_D");
+var timeEl = document.getElementById("timer");
+var questionSection = document.getElementById("question_section");
 var correctCheck = document.getElementById("correct_check");
 var userDetails = document.getElementById("user_details");
 var userName = document.getElementById("username");
 var saveUser = document.getElementById("saveUser");
 var finalScore = document.getElementById("final_score");
+var question = document.getElementById("question");
+var choiceA = document.getElementById("choice_A");
+var choiceB = document.getElementById("choice_B");
+var choiceC = document.getElementById("choice_C");
+var choiceD = document.getElementById("choice_D");
 var secondsLeft = 75;
 var currentQuestionIndex = 0
 var correctAnswers = 0
@@ -57,17 +57,21 @@ function startQuiz() {
 
 
 function setTime() {
+    // Sets interval in variable
     var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = secondsLeft;
+      secondsLeft--;
 
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            
-        }
+      timeEl.textContent = secondsLeft;
+  
+      if(secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Calls function to create and append image
+      }
+  
     }, 1000);
-}
-
+  }
+  
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute("data-choice");
@@ -120,6 +124,7 @@ startButton.addEventListener("click", function(){
     questionSection.style.display = "block",
     startButton.style.display = "none",
 
+    setTime()
     startQuiz()
 })
 
