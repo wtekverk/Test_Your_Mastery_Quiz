@@ -124,7 +124,15 @@ function endQuiz() {
 //need to make this function store user info in local storage 
 function saveUserInfo() {
 
+   var high_score =  window.localStorage.getItem("highScores"); 
+   var current_scores;
 
+    if (!high_score) { 
+        current_scores = []
+
+    } else { current_scores = JSON.parse(high_score)}
+ 
+    current_scores.push({name: userName.value, score: secondsLeft})
 
 
 }
@@ -150,3 +158,5 @@ startButton.addEventListener("click", function () {
         setTime()
     startQuiz()
 })
+
+saveUser.addEventListener("click", saveUserInfo)
