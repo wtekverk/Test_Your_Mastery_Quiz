@@ -7,7 +7,7 @@ var choiceA = document.getElementById("choice_A");
 var choiceB = document.getElementById("choice_B");
 var choiceC = document.getElementById("choice_C");
 var choiceD = document.getElementById("choice_D");
-var answerCheck = document.getElementById("answer_check");
+var correctCheck = document.getElementById("correct_check");
 var userDetails = document.getElementById("user_details");
 var userName = document.getElementById("username");
 var saveUser = document.getElementById("saveUser");
@@ -21,37 +21,89 @@ var incorrectAnswers = 0
 var questions = [
     {title: "What shape is a wombats poop?",
     choices: ["circe", "cube", "sphere", "triangle"],
-    answer: "cube"
+    answer: 1
     },
 
     {title: "What is the flightless bird that is also a national icon of NZ?",
     choices: ["blue jay", "ostrich", "kiwi", "wombat"],
-    answer: "kiwi"
+    answer: 2
     },
 
     {title: "The lesser short-tail is what kind of animal known to crawl around the floor of the forests of NZ?",
     choices: ["bat", "bird", "rat", "cat"],
-    answer: "bat"
+    answer: 0
     },
 
     {title: "If you wanted to find the oldest fossilized remains of Penguins where should you look?",
     choices: ["Africa", "Canada", "New Zealand", "Mexico"],
-    answer: "New Zealand"
+    answer: 2
     },
 
     {title: "The giant Moa is a what?",
     choices: ["type of blue whale", "extinct bird", "kangaroo", "tree"],
-    answer: "cube"
+    answer: 1
     }
 ]
 
-
-//TODO:functions 
-function startQuiz () {
+//once this function is prompted a question and its answers will pop up
+function startQuiz() {
+    question.textContent = questions [currentQuestionIndex].title,
+    choiceA.textContent = questions [currentQuestionIndex].choices[0]
+    choiceB.textContent = questions [currentQuestionIndex].choices[1]
+    choiceC.textContent = questions [currentQuestionIndex].choices[2]
+    choiceD.textContent = questions [currentQuestionIndex].choices[3]
 
 }
 
-//TODO: event listeners
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft;
+
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            
+        }
+    }, 1000);
+}
+
+
+function checkAnswer() {
+    var chosenAnswer = this.getAttribute("data-choice");
+    
+    if (chosenAnswer == questions[currentQuestionIndex].answer) {
+        correctAnswers++;
+        correctCheck.textContent = "You are RIGHT!"
+    
+    }else {
+        incorrectAnswers++;
+        correctCheck.textContent = "You are WRONG!";
+    }
+    
+    if (currentQuestionIndex < questions.length-1) {
+        currentQuestionIndex++;
+        startQuiz();
+    } else {
+
+    endQuiz()
+    }
+    
+    }
+    
+    function endQuiz() {
+        questionSection.style.display = "none";
+        userDetails.style.display = "block";
+        finalScore.textContent = correctAnswers 
+    }
+    
+    function saveUserInfo() {
+       
+
+    }
+
+
+
 
 //click events on each answer
 choiceA.addEventListener("click", checkAnswer)
@@ -65,32 +117,10 @@ userDetails.style.display = "none"
 
 //when start button is clicked start page will 
 startButton.addEventListener("click", function(){
-    questionSection.style.display = "block"
-    startButton.style.display = "none"
+    questionSection.style.display = "block",
+    startButton.style.display = "none",
 
-    beginQuiz()
+    startQuiz()
 })
-//click start button
-    //ref start btn on DOM
-    //add onclick event
 
-//start timer
-    //ref timer on DOM
-    //use set interval
-
-//display qs and as
-    //ref DOM
-    //loop through questions 
-    //display Qs on dom
-    //loop through choices
-    //display each choice on DOM
-
-//if answer correct show next Q
-    //check answer against choice????
-
-//if incorrect -time 
-    //time = time -15
-
-//when all qs answered GAME OVER 
-//when time === 0 game over 
 
