@@ -1,7 +1,7 @@
-
+//global variables 
 var startButton = document.getElementById("start_btn");
 var timeEl = document.querySelector(".timer");
-var questionSection = document.getElementById("question-section")
+var questionSection = document.getElementById("question_section")
 var question = document.getElementById("question");
 var choiceA = document.getElementById("choice_A");
 var choiceB = document.getElementById("choice_B");
@@ -17,6 +17,7 @@ var currentQuestionIndex = 0
 var correctAnswers = 0
 var incorrectAnswers = 0
 
+//questions that will display during test
 var questions = [
     {title: "What shape is a wombats poop?",
     choices: ["circe", "cube", "sphere", "triangle"],
@@ -45,33 +46,30 @@ var questions = [
 ]
 
 
-
+//TODO:functions 
 function startQuiz () {
 
 }
 
+//TODO: event listeners
 
+//click events on each answer
+choiceA.addEventListener("click", checkAnswer)
+choiceB.addEventListener("click", checkAnswer)
+choiceC.addEventListener("click", checkAnswer)
+choiceD.addEventListener("click", checkAnswer)
 
-//start button 
-//timer 
-//questions 
-//choices
-//clock
-//game over screen
+//keeps questions hidden when first loaded
+questionSection.style.display = "none"
+userDetails.style.display = "none"
 
-//make an html with all of these components
+//when start button is clicked start page will 
+startButton.addEventListener("click", function(){
+    questionSection.style.display = "block"
+    startButton.style.display = "none"
 
-//JS 
-
-//data - questions 
-
-//variables global
-
-//functions 
-
-//event listeners
-
-
+    beginQuiz()
+})
 //click start button
     //ref start btn on DOM
     //add onclick event
