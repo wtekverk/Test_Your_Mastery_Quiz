@@ -13,6 +13,7 @@ var choiceA = document.getElementById("choice_A");
 var choiceB = document.getElementById("choice_B");
 var choiceC = document.getElementById("choice_C");
 var choiceD = document.getElementById("choice_D");
+var timerInterval;
 var secondsLeft = 75;
 var currentQuestionIndex = 0
 var correctAnswers = 0
@@ -66,15 +67,15 @@ function startQuiz() {
 //this function sets the time to start when the start button is pressed  
 function setTime() {
     // this makes a variable that will store the time interval function 
-    var timerInterval = setInterval(function () {
+   timerInterval = setInterval(function () {
         secondsLeft--;
 
         //this makes the time element read the second left 
         timeEl.textContent = secondsLeft;
 
-        if (secondsLeft === 0 || ) { //TODO: make this clock stop 
-            // Stops execution of action at zero seconds and clears the timer out 
-            clearInterval(timerInterval);
+        if (secondsLeft === 0) { 
+
+            endQuiz()
         }
 
     }, 1000);
@@ -92,6 +93,7 @@ function checkAnswer() {
         // if the message is not correct a wrong message will play.
     } else {
         incorrectAnswers++;
+        secondsLeft = secondsLeft - 15;
         correctCheck.textContent = "You are WRONG!";
     }
 
@@ -110,6 +112,7 @@ function checkAnswer() {
 
 //this function makes the questionSection invisible and prompts the userDetails section and displays the final score
 function endQuiz() {
+    clearInterval(timerInterval);
     questionSection.style.display = "none";
     userDetails.style.display = "block";
     finalScore.textContent = "Your Final score is " + secondsLeft + " .You got " + correctAnswers + " correct and " + incorrectAnswers + " wrong."
