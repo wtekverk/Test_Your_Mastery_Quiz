@@ -1,5 +1,6 @@
 //GLOBAL VARIABLES 
 
+var timerBox = document.getElementById("timer_box")
 var startButton = document.getElementById("start_btn");
 var timeEl = document.getElementById("timer");
 var questionSection = document.getElementById("question_section");
@@ -14,7 +15,7 @@ var choiceB = document.getElementById("choice_B");
 var choiceC = document.getElementById("choice_C");
 var choiceD = document.getElementById("choice_D");
 var timerInterval;
-var secondsLeft = 75;
+var secondsLeft = 60;
 var currentQuestionIndex = 0
 var correctAnswers = 0
 var incorrectAnswers = 0
@@ -68,12 +69,12 @@ function startQuiz() {
 function setTime() {
     // this makes a variable that will store the time interval function 
    timerInterval = setInterval(function () {
-        secondsLeft--;
+        secondsLeft --;
 
         //this makes the time element read the second left 
         timeEl.textContent = secondsLeft;
 
-        if (secondsLeft === 0) { 
+        if (secondsLeft <= 0) { 
 
             endQuiz()
         }
@@ -114,28 +115,14 @@ function checkAnswer() {
 function endQuiz() {
     clearInterval(timerInterval);
     questionSection.style.display = "none";
+    timerBox.style.display = "none";
     userDetails.style.display = "block";
+
     finalScore.textContent = "Your Final score is " + secondsLeft + " .You got " + correctAnswers + " correct and " + incorrectAnswers + " wrong."
 
-    saveUserInfo()
+    
 }
 
-
-//need to make this function store user info in local storage 
-function saveUserInfo() {
-
-   var high_score =  window.localStorage.getItem("highScores"); 
-   var current_scores;
-
-    if (!high_score) { 
-        current_scores = []
-
-    } else { current_scores = JSON.parse(high_score)}
- 
-    current_scores.push({name: userName.value, score: secondsLeft})
-
-
-}
 
 
 //EVENT LISTENERS 
@@ -158,5 +145,3 @@ startButton.addEventListener("click", function () {
         setTime()
     startQuiz()
 })
-
-saveUser.addEventListener("click", saveUserInfo)
