@@ -1,4 +1,5 @@
-//global variables 
+//GLOBAL VARIABLES 
+
 var startButton = document.getElementById("start_btn");
 var timeEl = document.getElementById("timer");
 var questionSection = document.getElementById("question_section");
@@ -45,7 +46,10 @@ var questions = [
     }
 ]
 
-//once this function is prompted a question and its answers will pop up
+
+//FUNCTIONS
+
+//once this function is prompted a question and its answers will pop up. This uses the index of the array choices to get all of the answers to show up.
 function startQuiz() {
     question.textContent = questions [currentQuestionIndex].title,
     choiceA.textContent = questions [currentQuestionIndex].choices[0]
@@ -55,39 +59,44 @@ function startQuiz() {
 
 }
 
-
+//this function sets the time to start when the start button is pressed  
 function setTime() {
-    // Sets interval in variable
+    // this makes a variable that will store the time interval function 
     var timerInterval = setInterval(function() {
       secondsLeft--;
 
+      //this makes the time element read the second left 
       timeEl.textContent = secondsLeft;
   
       if(secondsLeft === 0) {
-        // Stops execution of action at set interval
+        // Stops execution of action at zero seconds and clears the timer out 
         clearInterval(timerInterval);
-        // Calls function to create and append image
       }
   
     }, 1000);
   }
   
-
+//this function gets triggered after a choice button is clicked 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute("data-choice");
     
+    //this says if the chosen question matches the answer index number a message will play
     if (chosenAnswer == questions[currentQuestionIndex].answer) {
         correctAnswers++;
         correctCheck.textContent = "You are RIGHT!"
     
+    // if the message is not correct a wrong message will play.
     }else {
         incorrectAnswers++;
         correctCheck.textContent = "You are WRONG!";
     }
-    
+
+    //this moves the the question index on by one point as long as there are still questions left 
     if (currentQuestionIndex < questions.length-1) {
         currentQuestionIndex++;
         startQuiz();
+
+    //if no questions are left move to endQuiz function
     } else {
 
     endQuiz()
@@ -95,19 +104,22 @@ function checkAnswer() {
     
     }
     
+    //this function makes the questionSection invisible and prompts the userDetails section and displays the final score
     function endQuiz() {
         questionSection.style.display = "none";
         userDetails.style.display = "block";
         finalScore.textContent = correctAnswers 
     }
     
+
+    //need to make this function store user info in local storage 
     function saveUserInfo() {
        
 
     }
 
 
-
+//EVENT LISTENERS 
 
 //click events on each answer, after click event they are sent to check Answer function
 choiceA.addEventListener("click", checkAnswer)
