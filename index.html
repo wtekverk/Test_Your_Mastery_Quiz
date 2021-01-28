@@ -10,19 +10,20 @@
 </head>
 
 <body>
-    <header>
-        <h1 id=Title>Test Your Mastery</h1>
-        <h3 id = "game_description"> In this game your will be tested on your knowledge of the wild life of New Zealand. Your final score is based on how many seconds you have left and every time you get a question wrong you will loose 15 seconds! See if you can get all five questions done before your time runs out!</h3>
+    <header class="container">
+        <h1 id="Title" >Test Your Mastery</h1>
+        <h3 id = "game_description" class="border"> In this game your will be tested on your knowledge of the wild life of New Zealand. Your final score is based on how many seconds you have left and every time you get a question wrong you will loose 15 seconds! See if you can get all five questions done before your time runs out!</h3>
     </header>
 
-<section id = "timer_box">
+<section id = "timer_box" class= "container border col-lg-3">
     <h3>Time Left</h3>
     <h3 id=timer></h3>
 </section>
 
-    <button id=start_btn>Start</button>
+    <button id="start_btn" class ="container col-lg-3 center">Start</button>
 
-    <content id=question_section>
+    <br>
+    <content id="question_section" class= "container">
         <h2 id=question></h2>
 
         <ol>
@@ -37,8 +38,8 @@
 
     </content>
 
-    <section id="user_details">
-
+    <section id="user_details" class= "container">
+        <h3 id="final_score"></h3>
         <label for="">Enter Initials Here</label>
         <input type="text" name="" id="username" />
         <button id="saveUser">Save Info</button>
@@ -46,7 +47,7 @@
 
 
 
-    <h3 id="final_score"></h3>
+    
 
     <script src="./script.js"></script>
 </body>

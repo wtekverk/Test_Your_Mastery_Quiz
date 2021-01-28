@@ -1,15 +1,23 @@
 body {
     font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(252, 169, 121);
 
 }
 
 button {
-    background: rgb(184, 179, 245);
+    background: #ffe097;
     font-size: 20px;
 
 }
 
 #timer_box {
     border: 5 px;
-    float: right
+    float: right;
+    width: 250px;
+}
+
+.border {
+    background-color: #fff9eb;
+    padding: 20px;
+
 }
