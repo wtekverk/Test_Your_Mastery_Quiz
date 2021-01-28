@@ -124,7 +124,6 @@ function endQuiz() {
 }
 
 
-
 //EVENT LISTENERS 
 
 //click events on each answer, after click event they are sent to check Answer function
